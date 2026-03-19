@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Survey Screening</title>
+</head>
+<body>
+  <p>Screening your eligibility...</p>
 
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const topic = urlParams.get("topic");
+
+    if (topic === "grocery") {
+      const options = [
+        "https://eyesee-research.decipherinc.com/survey/selfserve/215a/2026007",
+        "https://eyesee-research.decipherinc.com/survey/selfserve/215a/2026001"
+      ];
+      const pick = options[Math.floor(Math.random() * options.length)];
+      window.location.href = pick;
+    } else if (topic === "package") {
+      window.location.href = "https://qualtricsxm7n3pr5tl8.qualtrics.com/jfe/form/SV_emMCD1fjknV6i9w";
+    } else if (topic === "air") {
+      window.location.href = "https://surveys.harrisinsights.com/survey/selfserve/53b/250493";
+    } else if (topic === "traffic") {
+      window.location.href = "https://itrafficcenter.com/s/139187/30/20112b8b-31f7-4c50-aebd-b0237870935b";
+    } else {
+      window.location.href = "check.html";
+    }
+  </script>
+</body>
+</html>
