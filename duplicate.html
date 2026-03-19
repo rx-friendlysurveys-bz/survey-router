@@ -1,1 +1,136 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Survey Profiling</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#0b0f1a;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+/* CARD */
+
+.container{
+background:#111827;
+padding:30px;
+border-radius:12px;
+width:400px;
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+/* QUESTIONS */
+
+.question{
+margin-bottom:20px;
+}
+
+.question p{
+margin-bottom:10px;
+color:#cbd5f5;
+}
+
+label{
+display:block;
+padding:8px;
+background:#1f2937;
+margin-bottom:8px;
+border-radius:6px;
+cursor:pointer;
+}
+
+label:hover{
+background:#374151;
+}
+
+/* BUTTON */
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:#22c55e;
+color:black;
+font-weight:bold;
+font-size:16px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#16a34a;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Survey Profiling</h1>
+
+<form id="profilingForm">
+
+<div class="question">
+<p>Which type of grocery do you usually purchase?</p>
+
+<label><input type="radio" name="grocery" value="fresh"> Fresh Produce</label>
+<label><input type="radio" name="grocery" value="packaged"> Packaged Products</label>
+<label><input type="radio" name="grocery" value="other"> Other</label>
+
+</div>
+
+<div class="question">
+<p>Which category best describes your shopping?</p>
+
+<label><input type="radio" name="category" value="air"> Air Travel Related</label>
+<label><input type="radio" name="category" value="traffic"> Traffic/Transport</label>
+<label><input type="radio" name="category" value="general"> General Household</label>
+
+</div>
+
+<button type="submit">Continue</button>
+
+</form>
+
+</div>
+
+<script>
+
+document.getElementById("profilingForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+/* Redirect to your download link */
+
+window.location.href = "https://drive.google.com/uc?export=download&id=1LYabmwg7Uew8mSV_Ypy9SKnyZdVdrkK_";
+
+});
+
+</script>
+
+</body>
+</html>
+```
 
