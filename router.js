@@ -11,7 +11,6 @@ const surveys = {
   trafficCenter: "https://itrafficcenter.com/s/139187/30/20112b8b-31f7-4c50-aebd-b0237870935b"
 };
 
-// Handle profiling form
 document.getElementById("profilingForm")?.addEventListener("submit", function(e) {
   e.preventDefault();
 
@@ -26,12 +25,10 @@ document.getElementById("profilingForm")?.addEventListener("submit", function(e)
   routeUser(grocery, category);
 });
 
-// Routing logic with duplicate check
 function routeUser(grocery, category) {
   let chosenSurvey = null;
 
   if (grocery === "fresh" && category === "general") {
-    // Random grocery survey
     const options = surveys.groceryEyesee;
     chosenSurvey = options[Math.floor(Math.random() * options.length)];
   } else if (grocery === "packaged") {
@@ -41,11 +38,11 @@ function routeUser(grocery, category) {
   } else if (category === "traffic") {
     chosenSurvey = surveys.trafficCenter;
   } else {
-    window.location.href = "left.html";
+    // Fail case → send to check.html
+    window.location.href = "check.html";
     return;
   }
 
-  // Duplicate check: prevent same browser from repeating the same survey
   const previousSurvey = localStorage.getItem("assignedSurvey");
   if (previousSurvey === chosenSurvey) {
     window.location.href = "duplicate.html";
