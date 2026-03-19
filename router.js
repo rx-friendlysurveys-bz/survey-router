@@ -1,53 +1,27 @@
 // routing.js
 
-const surveys = {
-  groceryEyesee: [
-    "https://eyesee-research.decipherinc.com/survey/selfserve/215a/2026007",
-    "https://eyesee-research.decipherinc.com/survey/selfserve/215a/2026001",
-    "https://eyesee-research.decipherinc.com/survey/selfserve/215a/2026005"
-  ],
-  packageQualtrics: "https://qualtricsxm7n3pr5tl8.qualtrics.com/jfe/form/SV_emMCD1fjknV6i9w",
-  airHarris: "https://surveys.harrisinsights.com/survey/selfserve/53b/250493",
-  trafficCenter: "https://itrafficcenter.com/s/139187/30/20112b8b-31f7-4c50-aebd-b0237870935b"
-};
-
-document.getElementById("profilingForm")?.addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const grocery = document.querySelector('input[name="grocery"]:checked')?.value;
-  const category = document.querySelector('input[name="category"]:checked')?.value;
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const grocery = urlParams.get("grocery");
+  const category = urlParams.get("category");
 
   if (!grocery || !category) {
-    alert("Please answer both questions.");
+    // If no parameters, stay on profiling form
     return;
   }
 
-  routeUser(grocery, category);
-});
-
-function routeUser(grocery, category) {
-  let chosenSurvey = null;
-
+  // Route logic
   if (grocery === "fresh" && category === "general") {
-    const options = surveys.groceryEyesee;
-    chosenSurvey = options[Math.floor(Math.random() * options.length)];
+    // Send to screening page with context
+    window.location.href = `screening.html?topic=grocery`;
   } else if (grocery === "packaged") {
-    chosenSurvey = surveys.packageQualtrics;
+    window.location.href = `screening.html?topic=package`;
   } else if (category === "air") {
-    chosenSurvey = surveys.airHarris;
+    window.location.href = `screening.html?topic=air`;
   } else if (category === "traffic") {
-    chosenSurvey = surveys.trafficCenter;
+    window.location.href = `screening.html?topic=traffic`;
   } else {
     // Fail case → send to check.html
     window.location.href = "check.html";
-    return;
   }
-
-  const previousSurvey = localStorage.getItem("assignedSurvey");
-  if (previousSurvey === chosenSurvey) {
-    window.location.href = "duplicate.html";
-  } else {
-    localStorage.setItem("assignedSurvey", chosenSurvey);
-    window.location.href = chosenSurvey;
-  }
-}
+});
