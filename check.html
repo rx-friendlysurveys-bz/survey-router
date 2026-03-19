@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Survey Check</title>
+</head>
+<body>
+  <p>Checking your location...</p>
+
+  <script>
+    const userLang = navigator.language || navigator.userLanguage;
+
+    if (userLang.startsWith("en-US")) {
+      // US fail redirect
+      window.location.href = "https://panel.opinion-edge.com/callback/4/04ea4dd0-22e7-11f1-8a21-95a5238addbc";
+    } else if (userLang.startsWith("bn") || userLang.startsWith("en-BD")) {
+      // Bangladesh fail redirect
+      window.location.href = "https://panelopenionbd.github.io/Surveys/fail.html";
+    } else {
+      // Default fallback
+      window.location.href = "https://panel.opinion-edge.com/callback/4/04ea4dd0-22e7-11f1-8a21-95a5238addbc";
+    }
+  </script>
+</body>
+</html>
